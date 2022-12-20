@@ -1,0 +1,79 @@
+body {
+	height: 100vh;
+	margin: 0;
+	background-color: #000000;
+}
+
+#picker {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+:root {
+	--duration: 8s;
+}
+
+.bgContainer {
+	filter: brightness(50%);
+	width: 100vw;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.bg {
+	filter: blur(5vw);
+	position: fixed;
+	display: block;
+	width: 100vw;
+	height: 100vh;
+}
+
+.circle {
+	--pos-x: 50%;
+	--pos-y: 50%;
+	--end-x: 50%;
+	--end-y: 50%;
+	position: absolute;
+	text-align: center;
+	width: min(40vw, 450px);
+	height: min(40vw, 450px);
+	left: calc(var(--pos-x) - min(20vw, 225px));
+	top: calc(var(--pos-y) - min(20vw, 225px));
+	/* max-width: 450px; */
+	/* max-height: 450px; */
+	border-radius: 50%;
+	display: inline-block;
+	animation: move var(--duration) linear normal forwards;
+}
+
+.colored {
+	transition: all 0.25s ease-in-out;
+}
+
+@keyframes move {
+	0% {
+		opacity: 0%;
+	}
+
+	10% {
+		opacity: 50%;
+	}
+
+	90% {
+		opacity: 50%;
+	}
+
+	100% {
+		opacity: 0%;
+		transform: translate(calc(var(--end-x) - 225px),
+				calc(var(--end-y) - 225px));
+		display: none;
+		visibility: hidden;
+	}
+}
